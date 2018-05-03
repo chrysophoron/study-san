@@ -1,0 +1,17 @@
+<template>
+	<div class='hello'>Hello {{name}}</div>
+</template>
+
+<script>
+import './style.css'
+	export default {
+		initData () {
+			return {
+				name: 'World'
+			}
+
+		}
+
+	}
+</script>
+
