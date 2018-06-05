@@ -1,0 +1,72 @@
+<template>
+	<div>
+		<ul class='panel1'>
+		<li>
+			<input type='text' placeholder='姓名' value='{=person.name=}' >
+		</li>
+		<li>
+			<input type='text' placeholder='年龄' value='{=person.age=}' on-keypress='setAge'  on-change='setAge'>
+		</li>
+		<li>
+			<input type='text' placeholder='简介' value='{=person.info=}' >
+		</li>		
+	</ul>
+	<div class='button-info'>
+		<span>信息</span>
+		<button on-click='clearInfo'>移除信息</button>
+	</div>
+	<ul class='panel2'>
+		<li><span>姓名：</span><span class='msg'>{{person.name}}</span></li>
+		<li><span>年龄：</span><span class='msg'>{{person.age}}</span></li>
+		<li><span>简介：</span><span class='msg'>{{person.info}}</span></li>
+	</ul>
+	</div>
+</template>
+
+<script>
+import './style.css'
+import {DataTypes} from 'san'
+	export default {
+		initData () {
+			return {
+				person: {
+					name: 'yttmyu',
+					age: 18,
+					info: 'boy'
+				},
+				name:'0.0'
+			}
+		},
+		dataTypes: {
+			person:DataTypes.shape({
+				name: DataTypes.string,
+				info: DataTypes.string
+			})
+		},
+		clearInfo:function(){
+			this.data.set('person',{
+				name: undefined,
+				age: undefined,
+				info: undefined})
+		},
+		setAge:function(e){
+			//阻止键盘输入事件
+			e.preventDefault()
+			let age = ''
+			if(e.type == 'change') {
+				age = e.target.value.replace(/[^0-9]/g,'')
+			} else {				
+				age = this.data.get('person.age') + (e.key == undefined ? '' : e.key)
+				age =age.replace(/[a-zA-Z]/g,'')
+			}
+			this.data.set('person.age',Number(age))
+		},
+		pasteAge:function(){
+
+		}
+
+	}
+</script>
+
+
+

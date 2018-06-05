@@ -1,0 +1,30 @@
+.panel1 {
+	list-style: none;
+	display: flex;
+}
+
+.panel1 li input {
+	height: 30px;
+	line-height: 30px;
+	padding: 0 10px;
+	width: 150px;
+}
+
+.button-info {
+	padding-left: 40px;
+
+}
+
+.panel2 {
+	list-style: none;
+}
+
+.msg {
+	border-bottom: 1px solid;
+	width: 80px;
+	display: inline-block;
+}
+
+.panel2 li {
+	margin: 15px 0;
+}
